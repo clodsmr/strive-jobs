@@ -1,23 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import {Container, Row, Col, Form} from "react-bootstrap"
+import Search from "./components/Search.jsx"
+import { useState } from 'react';
 
 function App() {
+
+  const [query, setQuery] = useState("")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <BrowserRouter>
+    <Container>
+      <Row>
+        <Col sm={12} className="text-center">
+          <Link to="/">
+            <h1>Strive Jobs</h1>
+            <Form.Group controlId="exampleForm.ControlInput1" className="mr-2 mt-1">
+                <Form.Control type="text" placeholder="Search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </Form.Group>
+
+          </Link>
+        </Col>
+        
+      </Row>
+      <hr />
+     <Routes>
+    
+        <Route path="/" element= {query.length > 3 && <Search query={query} />} />
+        {/* <Route path="/cart" element={<Cart />} /> */}
+      </Routes> 
+    </Container>
+  </BrowserRouter>
     </div>
   );
 }
