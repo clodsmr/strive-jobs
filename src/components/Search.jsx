@@ -1,4 +1,5 @@
 import React from "react"
+import JobsList from "./JobsList"
 
 
 class Search extends React.Component {
@@ -23,10 +24,10 @@ class Search extends React.Component {
             // console.log(data)
             console.log("right after the fetch")
 
-            if (response.ok /* && data.Search */) {
+            if (response.ok) {
 
                 this.setState({
-                   jobs: data
+                   jobs: data.data
                 })
                 console.log(this.state.jobs)
 
@@ -60,7 +61,7 @@ class Search extends React.Component {
         return (
             <>
             <div>
-                everything ok
+               <JobsList jobs={this.state.jobs} />
             </div>
             </>
         ) 

@@ -3,12 +3,15 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import {Container, Row, Col, Form} from "react-bootstrap"
 import Search from "./components/Search.jsx"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Company from './components/Company';
 
 function App() {
 
   const [query, setQuery] = useState("")
 
+  
   return (
     <div className="App">
      <BrowserRouter>
@@ -23,7 +26,7 @@ function App() {
                   onChange={(e) => setQuery(e.target.value)}
                 />
               </Form.Group>
-
+             
           </Link>
         </Col>
         
@@ -32,7 +35,7 @@ function App() {
      <Routes>
     
         <Route path="/" element= {query.length > 3 && <Search query={query} />} />
-        {/* <Route path="/cart" element={<Cart />} /> */}
+          <Route path="/:company" element={<Company />} />  
       </Routes> 
     </Container>
   </BrowserRouter>
