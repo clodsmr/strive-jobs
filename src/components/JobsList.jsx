@@ -71,4 +71,4 @@ class JobsList extends React.Component {
 }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(JobsList);
+export default /* connect(mapStateToProps, mapDispatchToProps) */(JobsList);
